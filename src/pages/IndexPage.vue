@@ -26,7 +26,28 @@ if (player.value) player.value.addEventListener('ratechange', setPlaybackRate);
 <template>
   <q-page class="row items-center justify-evenly bg-grey">
     <div class="full-width">
-      <h4 class="text-center">Player WaveSurfer.JS</h4>
+      <h4 class="text-center">
+        <b>Player WaveSurfer.JS</b>
+      </h4>
+
+      <div class="text-center">
+        <span>Site com o tutorial que eu usei para manipular o componente áudio</span> <br />
+        <a href="https://css-tricks.com/lets-create-a-custom-audio-player/" target="_blank">
+          https://css-tricks.com/lets-create-a-custom-audio-player/
+        </a>
+        <br />
+
+        <span class="text-bold">Lib que usei para minipular as ondas do áudio</span> <br />
+        <a href="https://wavesurfer.xyz/" target="_blank"> wavesurfer.js </a>
+        <br />
+
+        <q-btn round color="white" href=" https://wavesurfer.xyz/" target="_blank">
+          <q-avatar hidden>
+            <img src="logo-wavesurfer.png" />
+          </q-avatar>
+        </q-btn>
+      </div>
+      <br />
       <div class="flex flex-center">
         <audio v-show="false" ref="player" src="/audio-example.mp3" controls preload="metadata" />
       </div>

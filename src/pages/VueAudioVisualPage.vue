@@ -26,8 +26,21 @@ if (player.value) player.value.addEventListener('ratechange', setPlaybackRate);
   <q-page class="row items-center justify-evenly bg-grey">
     <div class="full-width">
       <h4 class="text-center">
-        Player Vue Audio Visual https://css-tricks.com/lets-create-a-custom-audio-player/
+        <b>Player Vue Audio Visual</b>
       </h4>
+
+      <div class="text-center">
+        <span>Site com o tutorial que eu usei para manipular o componente áudio</span> <br />
+        <a href="https://css-tricks.com/lets-create-a-custom-audio-player/" target="_blank">
+          https://css-tricks.com/lets-create-a-custom-audio-player/
+        </a>
+
+        <!-- <span>Lib que usei para miniplar as ondas do áudio</span> <br />
+        <a href="https://wavesurfer.xyz/" target="_blank"> https://wavesurfer.xyz/ </a>
+
+        logo-wavesurfer.png -->
+      </div>
+      <br />
 
       <div class="flex flex-center">
         <audio v-show="false" ref="player" src="/audio-example.mp3" controls preload="metadata" />
