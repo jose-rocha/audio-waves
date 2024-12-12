@@ -5,7 +5,6 @@ import PlayerWaveSurfer from 'components/PlayerWaveSurfer.vue';
 
 const player = ref<HTMLAudioElement>();
 const playbackRate = ref(1.0);
-// const waveform = ref<HTMLDivElement>();
 
 const setPlaybackRate = () => {
   // playbackRate mostra a velocidade atual do áudio

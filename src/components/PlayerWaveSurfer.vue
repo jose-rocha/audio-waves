@@ -7,7 +7,6 @@ import { getCssVar } from 'quasar';
 
 const props = defineProps<{ player: HTMLAudioElement }>();
 const isPlaying = ref(false);
-const showWavesFake = ref(true);
 const audioDuration = ref(0);
 const audioInProgress = ref();
 const wavesurfer = ref();
@@ -17,10 +16,6 @@ const audioSpeedValue = ref(0);
 const playAudio = () => {
   isPlaying.value = true;
   wavesurfer.value.play();
-
-  setTimeout(() => {
-    showWavesFake.value = false;
-  }, 1000);
 };
 
 const pauseAudio = () => {
@@ -116,7 +111,7 @@ onMounted(() => {
           {{ !audioInProgress ? calculateTime(audioDuration) : calculateTime(audioInProgress) }}
         </div>
         <!--  Waves -->
-        <div id="waveform" class="col q-px-sm cursor-pointer"></div>
+        <div id="waveform" class="col q-px-sm cursor-pointer" />
       </div>
 
       <div class="col full-height flex flex-center">
@@ -139,5 +134,3 @@ onMounted(() => {
     </div>
   </div>
 </template>
-
-<style scoped></style>
