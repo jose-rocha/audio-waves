@@ -11,7 +11,7 @@ const audioDuration = ref(0);
 const audioInProgress = ref();
 const wavesurfer = ref();
 const audioSpeed = ref([1, 1.5, 2]);
-const audioSpeedValue = ref(0);
+const SpeedPositionArray = ref(0);
 
 const playAudio = () => {
   isPlaying.value = true;
@@ -31,12 +31,12 @@ const calculateTime = (secs: number) => {
 };
 
 const setPlaybackRate = () => {
-  if (audioSpeedValue.value < 2) {
-    audioSpeedValue.value += 1;
-    wavesurfer.value?.setPlaybackRate(audioSpeed.value[audioSpeedValue.value], true);
+  if (SpeedPositionArray.value < 2) {
+    SpeedPositionArray.value += 1;
+    wavesurfer.value?.setPlaybackRate(audioSpeed.value[SpeedPositionArray.value], true);
   } else {
-    audioSpeedValue.value = 0;
-    wavesurfer.value?.setPlaybackRate(audioSpeed.value[audioSpeedValue.value], true);
+    SpeedPositionArray.value = 0;
+    wavesurfer.value?.setPlaybackRate(audioSpeed.value[SpeedPositionArray.value], true);
   }
 };
 
@@ -71,6 +71,20 @@ onMounted(() => {
   });
 
   wavesurfer.value?.on('finish', () => {
+    isPlaying.value = false;
+  });
+
+  wavesurfer.value.on('click', () => {
+    wavesurfer.value.play();
+  });
+
+  wavesurfer.value.on('play', () => {
+    // console.log('O áudio começou a ser reproduzido.');
+    isPlaying.value = true;
+  });
+
+  wavesurfer.value.on('pause', () => {
+    // console.log('O áudio foi pausado.');
     isPlaying.value = false;
   });
 });
@@ -123,9 +137,9 @@ onMounted(() => {
             </q-tooltip>
             <span>
               {{
-                audioSpeed[audioSpeedValue] !== 1.5
-                  ? `${audioSpeed[audioSpeedValue]}.0`
-                  : audioSpeed[audioSpeedValue]
+                audioSpeed[SpeedPositionArray] !== 1.5
+                  ? `${audioSpeed[SpeedPositionArray]}.0`
+                  : audioSpeed[SpeedPositionArray]
               }}x
             </span>
           </q-chip>
